@@ -1,0 +1,5 @@
+{% for i in products %}
+<!--<a href="/shop/{{i.id}}">{{i.name}}</a>-->
+<!--detail given below code means  that path of the code and before detail we given my app that is specified in urls if we have more that one detail name then we get confuse so add that in url and call here so get off confusion-->
+<a href="{% url 'myapp:detail' i.id%}">{{i.name}}</a>
+{% endfor %}
