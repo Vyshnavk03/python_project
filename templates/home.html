@@ -1,5 +1,29 @@
-{% for i in products %}
+{% extends 'base.html' %}
+{% block body %}
+
 <!--<a href="/shop/{{i.id}}">{{i.name}}</a>-->
 <!--detail given below code means  that path of the code and before detail we given my app that is specified in urls if we have more that one detail name then we get confuse so add that in url and call here so get off confusion-->
-<a href="{% url 'myapp:detail' i.id%}">{{i.name}}</a>
-{% endfor %}
+<!--<a href="{% url 'myapp:detail' i.id%}">{{i.name}}</a><br>-->
+<div class="container">
+    <div class="row">
+        {% for i in products %}
+            {% if i.id %}
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="{{ i.img.url }}" class="card-img-top" alt="{{ i.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ i.name }}</h5>
+                        <p class="card-text">{{ i.desc }}</p>
+                        <a href="{% url 'myapp:detail' i.id %}" class="btn btn-primary">Go Detail</a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+
+
+
